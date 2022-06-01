@@ -3,11 +3,12 @@ from random import choice
 import os
 import discord
 
-# Discord Bot Set Up
-intents = discord.Intents.default()
-intents.message_content = True
 
-client = discord.Client(intents=intents)
+
+
+
+# Discord Bot Set Up
+client = discord.Client()
 
 @client.event
 async def on_ready():
@@ -19,6 +20,10 @@ async def on_message(message):
         return
 
     if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+        await message.channel.send('Hello there!')
+    
+    elif message.content.startswith('$wisdom?'):
+        await message.channel.send('you must complete your training before receiving this wisdom...check back later')
 
+# Run the Discord Bot
 client.run(os.environ['DISCORD_TOKEN'])
