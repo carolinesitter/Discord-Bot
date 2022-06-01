@@ -4,9 +4,6 @@ import os
 import discord
 
 
-
-
-
 # Discord Bot Set Up
 client = discord.Client()
 
@@ -25,7 +22,8 @@ async def on_message(message):
     
     # If the user asks for wisdom, generate a random piece of wisdom
     elif message.content.startswith('$wisdom?'):
-        await message.channel.send('you must complete your training before receiving this wisdom...check back later')
+        random_wisdom = choice(open("wisdom.txt").readlines())
+        await message.channel.send(random_wisdom)
 
 # Run the Discord Bot
 client.run(os.environ['DISCORD_TOKEN'])
